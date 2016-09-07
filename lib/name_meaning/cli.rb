@@ -4,7 +4,6 @@ class NameMeaning::CLI
   def call
     puts "Welcome to NameMeaning!"
     search_name
-    goodbye
   end
 
   def search_name
@@ -53,7 +52,7 @@ class NameMeaning::CLI
     end
   end
   end
-
+  # deleted goodbye method.
   # def goodbye
   #   puts "Thank you for using NameMeaning! Goodbye!"
   # end
