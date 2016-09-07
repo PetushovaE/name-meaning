@@ -1,27 +1,25 @@
 #Our CLI Controller
+
 class NameMeaning::CLI
 
   def call
-    puts "Welcome to NameMeaning!"
+    puts "*******************************************************************************"
+    puts "******* Welcome to NameMeaning CLI Gem Where you can learn about names! *******"
+    puts "*******************************************************************************"
     search_name
   end
 
   def search_name
-
       puts "What name do you want to search:"
-    
-      user_input = gets.chomp
-
+      user_input = gets.strip
       result = Scraper.scrape_index_page(user_input)
-
-      if result == "error message"
+      if false
       puts "#{user_input} - Name not found. Search another name."
-
       search_name
-
       else 
       puts "#{user_input} - Name found"
-
+       # binding.pry
+      # result 
       menu
     end
   end
@@ -29,10 +27,10 @@ class NameMeaning::CLI
   def menu
     input = nil
     while input != "exit"
-    puts "Type 1 to see info\n
+    puts "\nType 1 to see info\n
           Type 2 to see meaning\n
           Type 3 to view in your browser\n
-          Type 'exit' to quit"
+          Type 'exit' to end the program"
 
     input = gets.strip.downcase
 
@@ -43,17 +41,13 @@ class NameMeaning::CLI
       puts "#{name.meaning}"
     when "3"
       Launchy.open(name.url)
-    when "name"
+    when "search"
       search_name
     when "exit"
-      puts "Thank you for using NameMeaning! Goodbye!"
+      puts "Thank you for checking out NameMeaning CLI Gem. Goodbye!"
     else
-      puts "I don't understand what you want. Please type name to go back to search or type exit."
+      puts "Not sure what you want, type search or exit."
     end
   end
   end
-  # deleted goodbye method.
-  # def goodbye
-  #   puts "Thank you for using NameMeaning! Goodbye!"
-  # end
 end

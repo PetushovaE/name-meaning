@@ -2,9 +2,9 @@ class Name
   attr_accessor :name, :info, :meaning, :url
 
 
-
+#i need to initialize
   # def initialize
-	
+  
   # end
 
   
@@ -12,15 +12,4 @@ class Name
  
 
   # def self.scrape_name(user_input)
-
-
-  # 	name = self.new
-  # 	name.info = "info"
-  # 	name.meaning = "meaning"
-  # 	name.url = "http://www.behindthename.com"
-
-  # 	name
-  # end
-
-
 end
