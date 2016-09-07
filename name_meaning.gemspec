@@ -6,7 +6,7 @@ require 'name_meaning/version'
 Gem::Specification.new do |spec|
   spec.name          = "name_meaning"
   spec.version       = NameMeaning::VERSION
-  spec.authors       = ["TODO: Write your name"]
+  spec.authors       = ["TODO: Katerina"]
   spec.email         = ["epetushova@gmail.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
@@ -29,4 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "pry"
+  spec.add_dependency "nokogiri"
 end
