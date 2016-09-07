@@ -9,29 +9,29 @@ class NameMeaning::CLI
 
   def search_name
 
-    puts "What name do you want to search:"
+      puts "What name do you want to search:"
     
-     
+      user_input = gets.chomp
 
+      result = Scraper.scrape_index_page(user_input)
 
-    # if name found
+      if result == "error message"
+      puts "#{user_input} - Name not found. Search another name."
 
-    #   puts "Name found"
+      search_name
 
-    # menu
+      else 
+      puts "#{user_input} - Name found"
 
-    # else
-    #   puts "Name not found. Search another name"
-
-    # search_name
-    # end
+      menu
+    end
   end
 
   def menu
     input = nil
     while input != "exit"
-    puts "Type 1 to see meaning and origin of the name\n
-          Type 2 to see variations\n
+    puts "Type 1 to see info\n
+          Type 2 to see meaning\n
           Type 3 to view in your browser\n
           Type 'exit' to quit"
 
@@ -39,42 +39,22 @@ class NameMeaning::CLI
 
     case input
     when "1"
-      puts "#{name.meaning}"
+      puts "#{name.info}"
     when "2"
-      puts "#{name.variation}"
+      puts "#{name.meaning}"
     when "3"
-      Launchy.open( name.url )
+      Launchy.open(name.url)
     when "name"
       search_name
+    when "exit"
+      puts "Thank you for using NameMeaning! Goodbye!"
     else
-      puts "Sorry but I don't understand what you want. Type another name or type exit."
+      puts "I don't understand what you want. Please type name to go back to search or type exit."
     end
   end
   end
 
-  # def menu
-  #   input = nil
-  #   while input != "exit"
-      
-  #     puts "Enter the name you'd like more info on, or type 1 to see meaning and origin of the name, type 2 to see pronunciation or type exit: "
-  #     input = gets.strip.downcase
-
-  #   
-  #     case input
-  #     when "1"
-  #     puts "#{name.meaning}"
-  #     when "2"
-  #     puts "#{name.pronunciation}"
-  #     when "name"
-  #     search_name
-  #     else
-  #     puts "Sorry but this name is not available. Type another name or type exit."
-  #     end
-  #   end
-  #   end
+  # def goodbye
+  #   puts "Thank you for using NameMeaning! Goodbye!"
   # end
-
-  def goodbye
-    puts "Thank you for using NameMeaning! Goodbye!"
-  end
 end

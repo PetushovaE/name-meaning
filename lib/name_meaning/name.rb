@@ -1,27 +1,25 @@
 class Name
-  attr_accessor :name, :meaning, :variation, :url
+  attr_accessor :info, :meaning, :url
 
 
 
   def initialize
-	# self.scrape_names
+	
   end
 
   
   	
  
 
-  def self.scrape_names(user_input)
-  	names = []
+  def self.scrape_name(user_input)
 
 
-  	# name = self.new
-  	# name.name = "name"
-  	# name.meaning = "meaning"
-  	# name.variation = "variation"
-  	# name.url = "http://www.behindthename.com"
+  	name = self.new
+  	name.info = "info"
+  	name.meaning = "meaning"
+  	name.url = "http://www.behindthename.com"
 
-  	names
+  	name
   end
 
 
