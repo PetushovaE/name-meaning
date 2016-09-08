@@ -19,7 +19,6 @@ class NameMeaning::CLI
       else 
       puts "#{user_input} - Name found"
        # binding.pry
-      # result 
       menu
     end
   end
@@ -27,7 +26,7 @@ class NameMeaning::CLI
   def menu
     input = nil
     while input != "exit"
-    puts "\nType 1 to see info\n
+    puts "Type 1 to see info\n
           Type 2 to see meaning\n
           Type 3 to view in your browser\n
           Type 'exit' to end the program"
@@ -36,9 +35,9 @@ class NameMeaning::CLI
 
     case input
     when "1"
-      puts "#{name.info}"
+      puts "#{info}"
     when "2"
-      puts "#{name.meaning}"
+      puts "#{meaning}"
     when "3"
       Launchy.open(name.url)
     when "search"

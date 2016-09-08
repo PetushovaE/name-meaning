@@ -1,11 +1,14 @@
 class Name
-  attr_accessor :name, :info, :meaning, :url
+    attr_accessor :name, :info, :meaning, :url
 
 
 #i need to initialize
-  # def initialize
-  
-  # end
+	def initialize(name)
+		@name = name
+		@info = info
+		@meaning = meaning
+		@url = url
+    end
 
   
   	
