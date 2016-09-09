@@ -6,21 +6,28 @@ require 'colorize'
 class Scraper
 
 	def self.scrape_index_page(user_input)
+		scraped_name = {}
+
 		html = open("http://www.behindthename.com/name/#{user_input}")
 		doc = Nokogiri::HTML(html)
-		result = doc.search("div.namemain").text
+
+		scraped_name = doc.search("div.namemain").text
         # binding.pry
-		if result == "There was no name definition found for #{user_input.capitalize}."
+		if scraped_name == "There was no name definition found for #{user_input.capitalize}."
 			return false
-		else result == "Given name #{user_input.capitalize}."
+		else scraped_name == "Given name #{user_input.capitalize}."
 			return true
-	    name = self.new
-	 	name.info = doc.search('div.nameinfo').text
-	 	name.meaning = doc.search('div.padding').text
-	 	#inside dev style="padding"
-	 	name.url = doc.search("url").text
+	    
+	 	scraped_name[:info] = doc.search('div.nameinfo').text
+	 	scraped_name[:meaning] = doc.search('div.padding').text #inside dev style="padding"
+	 	# scraped_name{:url] = doc.search("di").text
     end
+    scraped_name
+    # {name:, info:, meaning:, url:}
   end
 end
 
-Scraper.scrape_index_page("ruchi")
+ruchi = Scraper.scrape_index_page("ruchi")
+# ruchi = {name:, info:, meaning:, url:}
+
+# Name.new("ruchi")

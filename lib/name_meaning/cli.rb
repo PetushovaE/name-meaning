@@ -14,8 +14,8 @@ class NameMeaning::CLI
   def search_name
     puts "What name do you want to search:"
     user_input = gets.strip
-    result = Scraper.scrape_index_page(user_input)
-    if !result 
+    scraped_name = Scraper.scrape_index_page(user_input)
+    if !scraped_name 
       puts "#{user_input} - Name not found. Search another name."
       search_name
     else 
@@ -39,15 +39,16 @@ class NameMeaning::CLI
 
     case input
     when "1"
-      puts "#{name.info}"
+      puts "#{scraped_name.info}"
     when "2"
-      puts "#{name.meaning}"
+      puts "#{scraped_name.meaning}"
     when "3"
-      Launchy.open(name.url)
+      Launchy.open(scraped_name.url)
     when "search"
       search_name
     when "exit"
       puts "Thank you for checking out NameMeaning CLI Gem. Goodbye!"
+      exit
     else
       puts "Not sure what you want, type search or exit."
     end
