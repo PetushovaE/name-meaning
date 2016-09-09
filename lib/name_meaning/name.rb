@@ -1,18 +1,10 @@
 class Name
     attr_accessor :name, :info, :meaning, :url
 
-
-#i need to initialize
-	def initialize(name)
+	def initialize(name, info, meaning, url)
 		@name = name
 		@info = info
 		@meaning = meaning
 		@url = url
     end
-
-  
-  	
- 
-
-  # def self.scrape_name(user_input)
 end

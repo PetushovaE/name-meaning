@@ -1,3 +1,5 @@
+require 'launchy'
+
 #Our CLI Controller
 
 class NameMeaning::CLI
@@ -10,34 +12,36 @@ class NameMeaning::CLI
   end
 
   def search_name
-      puts "What name do you want to search:"
-      user_input = gets.strip
-      result = Scraper.scrape_index_page(user_input)
-      if false
+    puts "What name do you want to search:"
+    user_input = gets.strip
+    result = Scraper.scrape_index_page(user_input)
+    if !result 
       puts "#{user_input} - Name not found. Search another name."
       search_name
-      else 
+    else 
       puts "#{user_input} - Name found"
-       # binding.pry
       menu
+        # binding.pry
     end
   end
 
   def menu
     input = nil
     while input != "exit"
-    puts "Type 1 to see info\n
+    puts "\n         -----------------------------------------\n         
+          Type 1 to see info\n
           Type 2 to see meaning\n
           Type 3 to view in your browser\n
-          Type 'exit' to end the program"
+          Type 'exit' to end the program\n
+          --------------------------------"
 
     input = gets.strip.downcase
 
     case input
     when "1"
-      puts "#{info}"
+      puts "#{name.info}"
     when "2"
-      puts "#{meaning}"
+      puts "#{name.meaning}"
     when "3"
       Launchy.open(name.url)
     when "search"
@@ -47,6 +51,6 @@ class NameMeaning::CLI
     else
       puts "Not sure what you want, type search or exit."
     end
-  end
+   end
   end
 end
