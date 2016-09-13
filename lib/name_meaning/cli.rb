@@ -1,25 +1,26 @@
-require 'launchy'
-
 #Our CLI Controller
+require 'launchy'
+require 'colorize'
 
 class NameMeaning::CLI
 
   def call
     puts "*******************************************************************************"
-    puts "******* Welcome to NameMeaning CLI Gem Where you can learn about names! *******"
+    puts "        Welcome to NameMeaning CLI Gem Where you can learn about names!        ".blue
     puts "*******************************************************************************"
     search_name
+    menu
   end
 
   def search_name
     puts "What name do you want to search:"
     user_input = gets.strip
-    scraped_name = Scraper.scrape_index_page(user_input)
-    if !scraped_name 
-      puts "#{user_input} - Name not found. Search another name."
+    result = Scraper.scrape_index_page(user_input)
+    if !result 
+      puts "#{user_input} - Name not found. Search another name.".red
       search_name
     else 
-      puts "#{user_input} - Name found"
+      puts "#{user_input} - Name found.".blue
       menu
         # binding.pry
     end
@@ -29,7 +30,7 @@ class NameMeaning::CLI
     input = nil
     while input != "exit"
     puts "\n         -----------------------------------------\n         
-          Type 1 to see info\n
+          Type 1 to see gender\n
           Type 2 to see meaning\n
           Type 3 to view in your browser\n
           Type 'exit' to end the program\n
@@ -39,18 +40,26 @@ class NameMeaning::CLI
 
     case input
     when "1"
-      puts "#{scraped_name.info}"
+      puts "GENDER:".blue
+      puts "#{:gender}"
+      # puts "#{:scripts}"
+      # puts "#{:pronounced}."
+      puts ""
     when "2"
-      puts "#{scraped_name.meaning}"
+      puts " MEANING:".blue
+      puts "#{:meaning}"
+      puts ""
     when "3"
-      Launchy.open(scraped_name.url)
+      Launchy.open("http://www.behindthename.com/name/#{user_input}")
     when "search"
       search_name
     when "exit"
-      puts "Thank you for checking out NameMeaning CLI Gem. Goodbye!"
+      puts "                                                        "
+      puts "Thank you for checking out NameMeaning CLI Gem. Goodbye!".capitalize.blue
+      puts "                                                        "
       exit
     else
-      puts "Not sure what you want, type search or exit."
+      puts "Not sure what you want, type SEARCH or EXIT.".red
     end
    end
   end

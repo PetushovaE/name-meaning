@@ -1,16 +1,20 @@
 class Name
-    attr_accessor :name, :info, :meaning, :url
 
-	def initialize(user_input)
-		user_input.each {|attr, value| self.send("#{attr}=", value)}
-		# @name = name
-		# @info = info
-		# @meaning = meaning
-		# @url = url
+	attr_accessor :name, :gender, :scripts, :meaning, :url
+ 	
+ 	@@all = []
+
+ 	
+ 	def initialize(name_hash)
+    	name_hash.each do |attribute, value|
+      	self.send("#{attribute}=", value)
     end
+    @@all << self
+  	end
+	
+  	def self.all
+    	@@all
+  	end
 end
 
-# hash = {name:, info:, meaning:, url:}
-           # added hash and self.send
-# hash.send("#{keys}=","value")
 
