@@ -1,6 +1,6 @@
 class Name
 
-	attr_accessor :name, :gender, :scripts, :meaning, :url
+	attr_accessor :name, :gender, :pronounced, :meaning
  	
  	@@all = []
 
