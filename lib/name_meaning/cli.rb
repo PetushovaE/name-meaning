@@ -22,11 +22,11 @@ class NameMeaning::CLI
         # binding.pry
 
     if !result 
-      puts "#{user_input} - Name not found. Search another name.".red
+      puts "Name not found. Search another name.".red
       search_name
     else 
       final_hash = @new_hash.name_hash
-      puts "#{user_input} - Name found. What do you want to do next?".white
+      puts "Name found. What do you want to do next?".white
       menu(final_hash)
         # binding.pry
     end
@@ -35,6 +35,7 @@ class NameMeaning::CLI
   def menu(hash)
     input = nil
     while input != "exit"
+    puts "\n         These are the available commands:".white
     puts "\n         -----------------------------------------\n         
           Type 1 to see short info\n
           Type 2 to see meaning\n
