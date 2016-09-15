@@ -20,7 +20,6 @@ class NameMeaning::CLI
     @new_hash = Scraper.new
     result = @new_hash.scrape_index_page(user_input)
         # binding.pry
-
     if !result 
       puts "Name not found. Search another name.".red
       search_name
@@ -28,7 +27,6 @@ class NameMeaning::CLI
       name = Name.new(result, user_input)
       puts "Name found. What do you want to do next?".white
       menu(name)
-        # binding.pry
     end
   end
 
@@ -63,7 +61,7 @@ class NameMeaning::CLI
       puts "*******************************************************************************".blue
       exit
     else
-      puts "Not sure what you want, type SEARCH or EXIT.".red
+      puts "Not sure what you want, type SEARCH or EXIT".red
     end
    end
   end
