@@ -25,14 +25,14 @@ class NameMeaning::CLI
       puts "Name not found. Search another name.".red
       search_name
     else 
-      final_hash = @new_hash.name_hash
+      name = Name.new(result, user_input)
       puts "Name found. What do you want to do next?".white
-      menu(final_hash)
+      menu(name)
         # binding.pry
     end
   end
 
-  def menu(hash)
+  def menu(name)
     input = nil
     while input != "exit"
     puts "\n         These are the available commands:".white
@@ -48,13 +48,13 @@ class NameMeaning::CLI
     case input
     when "1"
       puts "INFO:".white
-      puts "gender: #{hash[:gender]}"
-      puts "pronounced: #{hash[:pronounced]}"
+      puts "gender: #{name.gender}"
+      puts "pronounced: #{name.pronounced}"
     when "2"
       puts " MEANING:".white
-      puts "#{hash[:meaning]}"
+      puts "#{name.meaning}"
     when "3"
-      Launchy.open("http://www.behindthename.com/name/#{hash[:name]}")
+      Launchy.open("http://www.behindthename.com/name/#{name.name}")
     when "search"
       search_name
     when "exit"
